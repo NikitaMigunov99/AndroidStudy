@@ -6,14 +6,13 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.example.studyproject.R
 
-class MainActivity : AppCompatActivity() {
+class FakeSecondActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.new_main_activity)
+        setContentView(R.layout.fake_second_activity)
         val intent = Intent(this, FibonacciNumbersActivity::class.java)
         val button: Button = findViewById(R.id.button)
         button.setOnClickListener { startActivity(intent) }
     }
-
 }
