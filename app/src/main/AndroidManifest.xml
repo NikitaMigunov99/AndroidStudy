@@ -11,33 +11,6 @@
         android:theme="@style/Theme.StudyProject">
 
         <activity
-            android:name=".view.FakeFirstActivity"
-            android:exported="true"
-            android:launchMode="singleTask">
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        <activity
-            android:name=".view.FakeSecondActivity"
-            android:exported="true"
-            android:launchMode="singleTask">
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        <activity
-            android:name=".view.FibonacciNumbersActivity"
-            android:exported="true"
-            android:launchMode="singleTask">
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        <activity
             android:name=".view.MainActivity"
             android:exported="true">
             <intent-filter>

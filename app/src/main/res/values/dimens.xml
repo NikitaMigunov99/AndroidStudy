@@ -1,9 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Text sizes.-->
-    <dimen name="text_size">24sp</dimen>
-
-    <!-- Height.-->
-    <dimen name="fibonacci_number_height">100dp</dimen>
 
 </resources>
