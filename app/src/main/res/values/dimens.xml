@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <dimen name="text_input_field_top_margin">128dp</dimen>
+    <dimen name="button_bottom_margin">64dp</dimen>
+    <dimen name="small_margin">16dp</dimen>
 </resources>

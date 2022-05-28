@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">StudyProject</string>
+    <string name="name">Name</string>
+    <string name="second_name">Second name</string>
+    <string name="information">Information</string>
+    <string name="input_error">Input data not valid</string>
+    <string name="finish">Finish</string>
+    <string name="get_data">Get data</string>
+    <string name="get_full_data">Get full data</string>
+    <string name="age">Age</string>
+    <string name="phone">Phone</string>
+    <string name="permissions">Permissions</string>
 </resources>
