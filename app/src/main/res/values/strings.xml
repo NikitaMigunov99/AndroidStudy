@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">StudyProject</string>
+    <string name="android_site">Open Android site</string>
+    <string name="activity_main">Main Activity</string>
+    <string name="deeplink_activity">Deeplink Activity</string>
+    <string name="open_deeplink_activity">Open Deeplink Activity</string>
 </resources>
