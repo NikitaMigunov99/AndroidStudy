@@ -12,7 +12,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.studyproject.R
 import com.example.studyproject.contracts.PersonalDataResultContract
 import com.example.studyproject.models.PersonalDataModel
+import com.example.studyproject.view.FirstActivity.Companion.FIRST_ACTIVITY_DATA
 import com.example.studyproject.view.InputNameActivity.Companion.PERSONAL_DATA
+import com.example.studyproject.view.SecondActivity.Companion.SECOND_ACTIVITY_DATA
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,9 +25,21 @@ class MainActivity : AppCompatActivity() {
 
     private val activityResultLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == RESULT_OK && result.data?.getSerializableExtra(PERSONAL_DATA) is PersonalDataModel) {
-                (result.data?.getSerializableExtra(PERSONAL_DATA) as? PersonalDataModel)?.let {
-                    setPersonalData(it)
+            if (result.resultCode == RESULT_OK) {
+                if (result.data?.getSerializableExtra(PERSONAL_DATA) is PersonalDataModel) {
+                    (result.data?.getSerializableExtra(PERSONAL_DATA) as? PersonalDataModel)?.let {
+                        setPersonalData(it)
+                    }
+                }
+                if (result.data?.getSerializableExtra(FIRST_ACTIVITY_DATA) is PersonalDataModel) {
+                    (result.data?.getSerializableExtra(FIRST_ACTIVITY_DATA) as? PersonalDataModel)?.let {
+                        setPersonalData(it)
+                    }
+                }
+                if (result.data?.getSerializableExtra(SECOND_ACTIVITY_DATA) is PersonalDataModel) {
+                    (result.data?.getSerializableExtra(SECOND_ACTIVITY_DATA) as? PersonalDataModel)?.let {
+                        setPersonalData(it)
+                    }
                 }
             }
         }
@@ -49,6 +63,25 @@ class MainActivity : AppCompatActivity() {
         initView()
     }
 
+    /**
+     * If we start Activity with activityResultLauncher we will get result here too
+     */
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (data?.getSerializableExtra(PERSONAL_DATA) is PersonalDataModel) {
+            (data.getSerializableExtra(PERSONAL_DATA) as? PersonalDataModel)?.let {
+                setPersonalData(it)
+            }
+        }
+    }
+
+    /**
+     * If we request permissions with ActivityResultContracts.RequestMultiplePermissions() we will get result here too
+     */
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    }
+
     private fun initView() {
         val getButtonData = findViewById<Button>(R.id.get_data_button)
         getButtonData.setOnClickListener {
@@ -67,6 +100,16 @@ class MainActivity : AppCompatActivity() {
                 )
             )
         }
+
+        val firstActivityButton = findViewById<Button>(R.id.first_activity_button)
+        firstActivityButton.setOnClickListener {
+            activityResultLauncher.launch(Intent(this, FirstActivity::class.java))
+        }
+        val secondActivityButton = findViewById<Button>(R.id.second_activity_button)
+        secondActivityButton.setOnClickListener {
+            activityResultLauncher.launch(Intent(this, SecondActivity::class.java))
+        }
+
         nameTextView = findViewById(R.id.first_name)
         secondNameTextView = findViewById(R.id.second_name)
         ageTextView = findViewById(R.id.age)

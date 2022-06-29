@@ -10,4 +10,9 @@
     <string name="age">Age</string>
     <string name="phone">Phone</string>
     <string name="permissions">Permissions</string>
+    <string name="first_activity">First Activity Result</string>
+    <string name="second_activity">Second Activity Result</string>
+    <string name="first_activity_button">First Activity Launch</string>
+    <string name="second_activity_button">Second Activity Launch</string>
+    <string name="start_for_result">Full DATA for result</string>
 </resources>

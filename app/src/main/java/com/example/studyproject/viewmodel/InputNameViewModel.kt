@@ -66,7 +66,7 @@ class InputNameViewModel : ViewModel() {
     }
 
     companion object {
-        private const val REGULAR_PATTERN = "[0-9\\s&*#%@]"
+        private const val REGULAR_PATTERN = "[0-9&*#%@]"
         private val pattern = REGULAR_PATTERN.toRegex()
     }
 }
