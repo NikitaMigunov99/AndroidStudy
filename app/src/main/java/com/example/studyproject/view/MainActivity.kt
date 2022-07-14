@@ -44,6 +44,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    /**
+     * We will get result also in method [onActivityResult]
+     */
     private val fullDataActivityResultLauncher = registerForActivityResult(PersonalDataResultContract()) {
         it?.let {
             setPersonalData(it)
@@ -64,7 +67,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * If we start Activity with activityResultLauncher we will get result here too
+     * If we start Activity with [activityResultLauncher] we will get result here too
      */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -73,10 +76,15 @@ class MainActivity : AppCompatActivity() {
                 setPersonalData(it)
             }
         }
+        if (data?.getSerializableExtra(FIRST_ACTIVITY_DATA) is PersonalDataModel) {
+            (data.getSerializableExtra(FIRST_ACTIVITY_DATA) as? PersonalDataModel)?.let {
+                setPersonalData(it)
+            }
+        }
     }
 
     /**
-     * If we request permissions with ActivityResultContracts.RequestMultiplePermissions() we will get result here too
+     * If we request permissions with [ActivityResultContracts.RequestMultiplePermissions] we will get result here too
      */
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
@@ -108,6 +116,14 @@ class MainActivity : AppCompatActivity() {
         val secondActivityButton = findViewById<Button>(R.id.second_activity_button)
         secondActivityButton.setOnClickListener {
             activityResultLauncher.launch(Intent(this, SecondActivity::class.java))
+        }
+
+        val startActivityForResultButton = findViewById<Button>(R.id.start_for_result)
+        startActivityForResultButton.setOnClickListener {
+            /**
+             * Result we will get only in method [onActivityResult]
+             */
+            startActivityForResult(Intent(this, InputNameActivity::class.java), 5)
         }
 
         nameTextView = findViewById(R.id.first_name)
