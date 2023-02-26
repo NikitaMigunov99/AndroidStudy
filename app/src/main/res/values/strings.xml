@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">StudyProject</string>
+    <string name="jokes">Анекдоты</string>
+    <string name="fibonacci_numbers">Числа Фибоначчи</string>
+    <string name="jokes_not_loaded">Не удалось загрузить шутки</string>
+    <string name="coroutines">Корутины</string>
+    <string name="coroutines_experiments">Эксперименты с корутинами</string>
+    <string name="name">Name</string>
+    <string name="second_name">Second name</string>
+    <string name="information">Information</string>
+    <string name="input_error">Input data not valid</string>
+    <string name="finish">Finish</string>
+    <string name="get_data">Get data</string>
+    <string name="get_full_data">Get full data</string>
+    <string name="age">Age</string>
+    <string name="phone">Phone</string>
+    <string name="permissions">Permissions</string>
+    <string name="result_activity">Activity Result</string>
+    <string name="first_activity">First Activity Result</string>
+    <string name="second_activity">Second Activity Result</string>
+    <string name="first_activity_button">First Activity Launch</string>
+    <string name="second_activity_button">Second Activity Launch</string>
+    <string name="start_for_result">Full DATA for result</string>
+    <string name="start_activity_for_result">start activity for result Old</string>
 </resources>

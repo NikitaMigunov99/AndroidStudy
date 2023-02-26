@@ -2,6 +2,11 @@
 <manifest package="com.example.studyproject"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,12 +16,36 @@
         android:theme="@style/Theme.StudyProject">
 
         <activity
-            android:name=".view.MainActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".coroutines.view.activity.JokesActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".coroutines.view.activity.FibonacciActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".coroutines.view.activity.CoroutinesStartActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".coroutines.view.activity.CoroutinesActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.result.api.view.ResultMainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.result.api.view.InputNameActivity">
+        </activity>
+        <activity
+            android:name=".activity.result.api.view.FirstActivity">
+        </activity>
+        <activity
+            android:name=".activity.result.api.view.SecondActivity">
         </activity>
     </application>
 
