@@ -25,7 +25,7 @@ class ResultMainActivity : AppCompatActivity() {
 
     /**
      * I have created various Activities to verify different calls hold various results and see only their own data
-     * [onActivityResult] will be invoked to, but with empty Extras
+     * [onActivityResult] will be invoked to and contain result to
      */
     private val activityResultLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -49,7 +49,22 @@ class ResultMainActivity : AppCompatActivity() {
         }
 
     /**
-     * [onActivityResult] will be invoked to, but with empty Extras
+     * Other Activity Result Launchers do not see result.
+     * [onActivityResult] may be invoked to and contain result to.
+     */
+    private val secondActivityResultLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == RESULT_OK) {
+                if (result.data?.getSerializableExtra(SECOND_ACTIVITY_DATA) is PersonalDataModel) {
+                    (result.data?.getSerializableExtra(SECOND_ACTIVITY_DATA) as? PersonalDataModel)?.let {
+                        setPersonalData(it)
+                    }
+                }
+            }
+        }
+
+    /**
+     * [onActivityResult] may be invoked to. If it occurs [onActivityResult] will get result to.
      */
     private val fullDataActivityResultLauncher = registerForActivityResult(PersonalDataResultContract()) {
         it?.let {
@@ -71,7 +86,8 @@ class ResultMainActivity : AppCompatActivity() {
     }
 
     /**
-     * If we start Activity with [activityResultLauncher] we will get result here too
+     * If we start Activity with [activityResultLauncher], then [onActivityResult] may be invoked to and [data] will
+     * contain result to
      */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -121,6 +137,11 @@ class ResultMainActivity : AppCompatActivity() {
         val secondActivityButton = findViewById<Button>(R.id.second_activity_button)
         secondActivityButton.setOnClickListener {
             activityResultLauncher.launch(Intent(this, SecondActivity::class.java))
+        }
+
+        val secondActivityLauncherButton = findViewById<Button>(R.id.second_launcher_start_for_result)
+        secondActivityLauncherButton.setOnClickListener {
+            secondActivityResultLauncher.launch(Intent(this, SecondActivity::class.java))
         }
 
         val startActivityForResultButton = findViewById<Button>(R.id.start_for_result)
